@@ -174,18 +174,22 @@ func getPermissions(input interface{}) []domain.Permission {
 			resourceSet := perm["resource"].(*schema.Set).List()
 			for _, resource := range resourceSet {
 				res := resource.(map[string]interface{})
-				var id, org_id, name, org &string = nil, nil, nil, nil
+				var id, org_id, name, org *string = nil, nil, nil, nil
 				if res["id"] != nil {
-					id = res["id"].(string)
+					x := res["id"].(string)
+					id = &x
 				}
 				if res["org_id"] != nil {
-					org_id = res["org_id"].(string)
+					x := res["org_id"].(string)
+					org_id = &x
 				}
 				if res["name"] != nil {
-					name = res["name"].(string)
+					x := res["name"].(string)
+					name = &x
 				}
 				if res["org"] != nil {
-					org = res["org"].(string)
+					x := res["org"].(string)
+					org = &x
 				}
 				Resource := domain.Resource{Type: domain.ResourceType(res["type"].(string)), Id: id, OrgID: org_id, Name: name, Org: org}
 				each := domain.Permission{Action: domain.PermissionAction(perm["action"].(string)), Resource: Resource}
