@@ -28,7 +28,7 @@ func TestAccAuthorization(t *testing.T) {
 					resource.TestCheckResourceAttrSet("influxdb-v2_authorization.acctest", "token"),
 					resource.TestCheckResourceAttr("influxdb-v2_authorization.acctest", "org_id", os.Getenv("INFLUXDB_V2_ORG_ID")),
 					// permissions is a complex array... we'll just check it has the correct length
-					resource.TestCheckResourceAttr("influxdb-v2_authorization.acctest", "permissions.#", "2"),
+					resource.TestCheckResourceAttr("influxdb-v2_authorization.acctest", "permissions.#", "3"),
 				),
 			},
 			{
