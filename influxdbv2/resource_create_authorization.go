@@ -96,7 +96,6 @@ func resourceAuthorizationCreate(d *schema.ResourceData, meta interface{}) error
 		OrgID:       &orgId,
 		Permissions: &permissions,
 	}
-
 	result, err := influx.AuthorizationsAPI().CreateAuthorization(context.Background(), &authorizations)
 	if err != nil {
 		return fmt.Errorf("error creating authorization: %e", err)
@@ -175,19 +174,19 @@ func getPermissions(input interface{}) []domain.Permission {
 			for _, resource := range resourceSet {
 				res := resource.(map[string]interface{})
 				var id, org_id, name, org *string = nil, nil, nil, nil
-				if res["id"] != nil {
+				if res["id"] != nil && res["id"] != "" {
 					x := res["id"].(string)
 					id = &x
 				}
-				if res["org_id"] != nil {
+				if res["org_id"] != nil && res["org_id"] != "" {
 					x := res["org_id"].(string)
 					org_id = &x
 				}
-				if res["name"] != nil {
+				if res["name"] != nil && res["name"] != "" {
 					x := res["name"].(string)
 					name = &x
 				}
-				if res["org"] != nil {
+				if res["org"] != nil && res["org"] != "" {
 					x := res["org"].(string)
 					org = &x
 				}
