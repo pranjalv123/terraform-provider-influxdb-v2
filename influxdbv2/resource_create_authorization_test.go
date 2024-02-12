@@ -71,6 +71,13 @@ resource "influxdb-v2_authorization" "acctest" {
             type = "buckets"
         }
     }
+    permissions {
+        action = "write"
+        resource {
+            org_id = "` + os.Getenv("INFLUXDB_V2_ORG_ID") + `"
+            type = "buckets"
+        }
+    }
 }
 `
 }
