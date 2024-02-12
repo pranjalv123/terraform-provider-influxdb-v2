@@ -45,7 +45,7 @@ func ResourceAuthorization() *schema.Resource {
 								Schema: map[string]*schema.Schema{
 									"id": {
 										Type:     schema.TypeString,
-										Required: true,
+										Optional: true,
 									},
 									"org": {
 										Type:     schema.TypeString,
