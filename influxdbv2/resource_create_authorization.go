@@ -99,7 +99,7 @@ func resourceAuthorizationCreate(d *schema.ResourceData, meta interface{}) error
 
 	result, err := influx.AuthorizationsAPI().CreateAuthorization(context.Background(), &authorizations)
 	if err != nil {
-		return fmt.Errorf("error creating authorization!: %e", err)
+		return fmt.Errorf("error creating authorization: %e", err)
 	}
 	d.SetId(*result.Id)
 	err = d.Set("token", *result.Token)
